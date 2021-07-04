@@ -29,6 +29,27 @@ public class BankAccount {
     private int balance;
     private Person owner;
 
+    //생성자 : 인스턴스를 만들고, 인스턴스의 속성(인스턴스 변수)들을 초기화시켜줍니다.
+    public BankAccount(int pBalance){
+        if(pBalance<0){
+            balance = 0;
+        }else{
+            balance = pBalance;
+        }
+    }
+    public BankAccount(Person pOwner){
+        owner = pOwner;
+        balance = 0;
+    }
+    public BankAccount(int pBalance, Person pOwner){
+        owner = pOwner;
+        if(pBalance<0){
+            balance = 0;
+        }else{
+            balance = pBalance;
+        }
+    }
+
     public void setBalance(int newBalance){
         if(newBalance>=0){
             balance = newBalance;
@@ -43,7 +64,7 @@ public class BankAccount {
     public Person getOwner(){
         return owner;
     }
-    boolean deposit(int amount) {
+    public boolean deposit(int amount) {
         if(amount>=0 && owner.getCashAmount()>=amount){
             balance+=amount;
             owner.setCashAmount(owner.getCashAmount()-amount);
@@ -54,7 +75,7 @@ public class BankAccount {
             return false;
         }
     }
-    boolean withdraw(int amount) {
+    public boolean withdraw(int amount) {
         if(amount>=0 && amount<=balance){
             balance-=amount;
             owner.setCashAmount(owner.getCashAmount()+amount);
@@ -65,4 +86,34 @@ public class BankAccount {
             return false;
         }
     }
+    //메소드 오버로딩 : 클래스 내에 같은 이름의 메소드를 2개 이상 정의할 수 있게 해주는 기능
+    public boolean transfer(Person to, int amount){
+        return owner.transfer(to, amount);
+    }
+    public boolean transfer(BankAccount to, int amount){
+        return owner.transfer(to.owner, amount);
+    }
+    /*
+    public boolean transfer(Person to, int amount) {
+        if (amount >= 0 && amount <= balance) {
+            balance -= amount;
+            to.getAccount().balance += amount;
+            System.out.println("true - from: " + (owner.getName()) + ", to: " + (to.getName()) + ", amount: " + amount + ", balance: " + balance);
+            return true;
+        } else {
+            System.out.println("false - from: " + (owner.getName()) + ", to: " + (to.getName()) + ", amount: " + amount + ", balance: " + balance);
+            return false;
+        }
+    }
+    public boolean transfer(BankAccount to, int amount){
+        if(amount>=0 && amount<=balance){
+            balance-=amount;
+            to.balance+=amount;
+            System.out.println("true - from: "+(owner.getName())+", to: "+(to.owner.getName())+", amount: "+amount+", balance: "+balance);
+            return true;
+        }else{
+            System.out.println("false - from: "+(owner.getName())+", to: "+(to.owner.getName())+", amount: "+amount+", balance: "+balance);
+            return false;
+        }
+    }*/
 }
