@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class BankDriver {
     public static void main(String[] args) {
 //        //사람 선언
@@ -38,5 +40,14 @@ public class BankDriver {
         a1.transfer(p2, 150000);
         p2.transfer(a1, 270000);
         p1.transfer(p2, 130000);
+
+        // 콘솔 입력 받기(Scanner)
+        System.out.println("나이가 어떻게 되시나요?");
+        Scanner scanner = new Scanner(System.in);
+        int age = scanner.nextInt();
+
+        System.out.println("이름이 어떻게 되시나요?");
+        String name = scanner.next();
+
     }
 }
