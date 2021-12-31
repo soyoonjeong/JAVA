@@ -13,8 +13,8 @@ public class paintJPanelEx extends JFrame {
     }
     class MyPanel extends JPanel{
         @Override
-        public void paintComponents(Graphics g) {
-            super.paintComponents(g);
+        public void paintComponent(Graphics g) {
+            super.paintComponent(g);
             g.setColor(Color.RED);
             g.drawRect(10,10,50,50);
             g.setColor(Color.YELLOW);

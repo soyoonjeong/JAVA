@@ -13,8 +13,8 @@ public class GraphicsColorFontEx extends JFrame {
     }
     class MyPanelFortwo extends JPanel{
         @Override
-        public void paintComponents(Graphics g) {
-            super.paintComponents(g);
+        public void paintComponent(Graphics g) {
+            super.paintComponent(g);
             g.setColor(Color.BLUE);
             g.drawString("자바가 정말 재밌다!",30,30);
             g.setColor(new Color(255,0,0));
